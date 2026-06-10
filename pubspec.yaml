@@ -10,21 +10,27 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  supabase_flutter: ^2.12.2
 
   cupertino_icons: ^1.0.8
 
-  # Supabase
-  supabase_flutter: ^2.9.1
+  # Banco de Dados
+  supabase_flutter: ^2.12.2
 
-  # Datas e horários
+  # Datas e Horários
   intl: ^0.20.2
 
-  # Gerenciamento de estado
+  # Gerenciamento de Estado
   provider: ^6.1.5
 
   # Ícones
   font_awesome_flutter: ^10.10.0
+
+  # Animações
+  lottie: ^3.3.1
+  animate_do: ^4.2.0
+
+  # Sons
+  audioplayers: ^6.5.0
 
 dev_dependencies:
   flutter_test:
@@ -38,12 +44,5 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    
-
-  # Caso queira usar fontes personalizadas futuramente:
-  # fonts:
-  #   - family: Poppins
-  #     fonts:
-  #       - asset: assets/fonts/Poppins-Regular.ttf
-  #       - asset: assets/fonts/Poppins-Bold.ttf
-  #         weight: 700
+    - assets/sounds/
+    - assets/animations/
