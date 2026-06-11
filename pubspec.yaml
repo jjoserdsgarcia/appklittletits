@@ -31,6 +31,7 @@ dependencies:
 
   # Sons
   audioplayers: ^6.5.0
+  crypto: ^3.0.7
 
 dev_dependencies:
   flutter_test:
