@@ -1,4 +1,10 @@
+import 'package:appklittletits/models/utils.dart';
+import 'package:appklittletits/screens/auth/cadastro_screen.dart';
+import 'package:appklittletits/screens/cliente/home_cliente_screen.dart';
+import 'package:appklittletits/screens/funcionario/home_funcionario_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,10 +14,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final emailController = TextEditingController();
-  final senhaController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  final loginController = TextEditingController();
+  final passwordController = TextEditingController();
 
-  bool esconderSenha = true;
+  bool hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.grey[100],
 
       appBar: AppBar(
-        title: const Text("Barbearia"),
+        title: const Text("Liminal Barber Shop"),
         centerTitle: true,
       ),
 
@@ -30,93 +37,142 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             constraints: const BoxConstraints(maxWidth: 400),
 
-            child: Column(
-              children: [
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  const Icon(Icons.content_cut, size: 100),
 
-                const Icon(
-                  Icons.content_cut,
-                  size: 100,
-                ),
+                  const SizedBox(height: 20),
 
-                const SizedBox(height: 20),
-
-                const Text(
-                  "Bem-vindo",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
+                  const Text(
+                    "Bem-vindo",
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   ),
-                ),
 
-                const SizedBox(height: 10),
+                  const SizedBox(height: 10),
 
-                const Text(
-                  "Faça login para continuar",
-                  textAlign: TextAlign.center,
-                ),
-
-                const SizedBox(height: 30),
-
-                TextField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    labelText: "E-mail",
-                    border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.email),
+                  const Text(
+                    "Faça login para continuar",
+                    textAlign: TextAlign.center,
                   ),
-                ),
 
-                const SizedBox(height: 20),
+                  const SizedBox(height: 30),
 
-                TextField(
-                  controller: senhaController,
-                  obscureText: esconderSenha,
+                  TextFormField(
+                    controller: loginController,
+                    decoration: const InputDecoration(
+                      labelText: "Login",
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.email),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Campo obrigatório!";
+                      }
+                      return null;
+                    },
+                  ),
 
-                  decoration: InputDecoration(
-                    labelText: "Senha",
-                    border: const OutlineInputBorder(),
+                  const SizedBox(height: 20),
 
-                    prefixIcon: const Icon(Icons.lock),
+                  TextFormField(
+                    controller: passwordController,
+                    obscureText: hidePassword,
 
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          esconderSenha = !esconderSenha;
-                        });
-                      },
-                      icon: Icon(
-                        esconderSenha
-                            ? Icons.visibility
-                            : Icons.visibility_off,
+                    decoration: InputDecoration(
+                      labelText: "Senha",
+                      border: const OutlineInputBorder(),
+
+                      prefixIcon: const Icon(Icons.lock),
+
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            hidePassword = !hidePassword;
+                          });
+                        },
+                        icon: Icon(
+                          hidePassword ? Icons.visibility : Icons.visibility_off,
+                        ),
                       ),
                     ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Campo obrigatório!";
+                      }
+                      return null;
+                    },
                   ),
-                ),
 
-                const SizedBox(height: 30),
+                  const SizedBox(height: 30),
 
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
 
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Entrar"),
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        if (formKey.currentState!.validate()) {
+                          final supabase = Supabase.instance.client;
+                          final user = await supabase
+                              .from("user") //
+                              .select()
+                              .eq("login", loginController.text)
+                              .eq("password", Utils.gerarMd5(passwordController.text));
+                          if (user.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Credenciais inválidas"),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text("Usuário autenticado com sucesso"),
+                                backgroundColor: Colors.green,
+                              ),
+                            );
+                            if (user.first["is_employee"]) {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return HomeEmployeeScreen();
+                                  },
+                                ),
+                              );
+                            } else {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return HomeClientScreen();
+                                  },
+                                ),
+                              );
+                            }
+                          }
+                        }
+                      },
+                      child: Text("Entrar"),
+                    ),
                   ),
-                ),
 
-                const SizedBox(height: 15),
+                  const SizedBox(height: 15),
 
-                TextButton(
-                  onPressed: () {},
-                  child: const Text("Criar conta"),
-                ),
-
-                TextButton(
-                  onPressed: () {},
-                  child: const Text("Esqueci minha senha"),
-                ),
-              ],
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CadastroScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text("CADASTRE-SE NO SISTEMA"),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
