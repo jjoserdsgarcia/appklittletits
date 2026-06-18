@@ -1,6 +1,4 @@
-import 'package:appklittletits/screens/auth/cadastro_screen.dart';
 import 'package:appklittletits/screens/auth/login_screen.dart';
-import 'package:appklittletits/services/register_services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
