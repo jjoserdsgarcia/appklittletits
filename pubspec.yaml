@@ -27,7 +27,7 @@ dependencies:
   # Ícones
   font_awesome_flutter: ^10.10.0
 
-  #video_player
+  # Vídeo
   video_player: ^2.9.2
 
   # Animações
@@ -37,11 +37,16 @@ dependencies:
   # Sons
   audioplayers: ^6.5.0
 
+  # Fontes
+  google_fonts: ^6.2.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^6.0.0
+
 
 flutter:
   uses-material-design: true
@@ -51,4 +56,3 @@ flutter:
     - assets/icons/
     - assets/sounds/
     - assets/animations/
-    
