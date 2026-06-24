@@ -41,186 +41,176 @@ class _CadastroScreenState extends State<CadastroScreen> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    backgroundColor: const Color(0xFFC8C17A),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFC8C17A),
 
-    body: Stack(
-      children: [
-
-        /////////////////////////////////////////////////////////////
-        // FUNDO
-        /////////////////////////////////////////////////////////////
-
-        Positioned.fill(
-          child: Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFFD9D08C),
-                  Color(0xFFC8C17A),
-                  Color(0xFFB0A85F),
-                  Color(0xFF918844),
-                ],
+      body: Stack(
+        children: [
+          /////////////////////////////////////////////////////////////
+          // FUNDO
+          /////////////////////////////////////////////////////////////
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFFD9D08C),
+                    Color(0xFFC8C17A),
+                    Color(0xFFB0A85F),
+                    Color(0xFF918844),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
 
-        /////////////////////////////////////////////////////////////
-        // TEXTURA DA PAREDE
-        /////////////////////////////////////////////////////////////
-
-        Positioned.fill(
-          child: Opacity(
-            opacity: .06,
-            child: Image.asset(
-              "assets/images/wall_texture.png",
-              fit: BoxFit.cover,
-              repeat: ImageRepeat.repeat,
-            ),
-          ),
-        ),
-
-        /////////////////////////////////////////////////////////////
-        // RUÍDO CRT
-        /////////////////////////////////////////////////////////////
-
-        Positioned.fill(
-          child: IgnorePointer(
+          /////////////////////////////////////////////////////////////
+          // TEXTURA DA PAREDE
+          /////////////////////////////////////////////////////////////
+          Positioned.fill(
             child: Opacity(
-              opacity: .03,
+              opacity: .06,
               child: Image.asset(
-                "assets/so/noise.png",
+                "assets/images/wall_texture.png",
                 fit: BoxFit.cover,
                 repeat: ImageRepeat.repeat,
               ),
             ),
           ),
-        ),
 
-        /////////////////////////////////////////////////////////////
-        // NÉVOA
-        /////////////////////////////////////////////////////////////
-
-        Positioned.fill(
-          child: IgnorePointer(
-            child: Opacity(
-              opacity: .08,
-              child: Image.asset(
-                "assets/images/fog.png",
-                fit: BoxFit.cover,
+          /////////////////////////////////////////////////////////////
+          // RUÍDO CRT
+          /////////////////////////////////////////////////////////////
+          Positioned.fill(
+            child: IgnorePointer(
+              child: Opacity(
+                opacity: .03,
+                child: Image.asset(
+                  "assets/so/noise.png",
+                  fit: BoxFit.cover,
+                  repeat: ImageRepeat.repeat,
+                ),
               ),
             ),
           ),
-        ),
 
-        /////////////////////////////////////////////////////////////
-        // DESFOQUE
-        /////////////////////////////////////////////////////////////
-
-        Positioned.fill(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 2,
-              sigmaY: 2,
-            ),
-            child: Container(
-              color: Colors.transparent,
-            ),
-          ),
-        ),
-
-        /////////////////////////////////////////////////////////////
-        // LUZ DO TETO
-        /////////////////////////////////////////////////////////////
-
-        Positioned(
-          top: 45,
-          left: 0,
-          right: 0,
-          child: Center(
-            child: Container(
-              width: 340,
-              height: 14,
-              decoration: BoxDecoration(
-                color: Colors.white70,
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.white.withOpacity(.9),
-                    blurRadius: 70,
-                    spreadRadius: 14,
-                  ),
-                ],
+          /////////////////////////////////////////////////////////////
+          // NÉVOA
+          /////////////////////////////////////////////////////////////
+          Positioned.fill(
+            child: IgnorePointer(
+              child: Opacity(
+                opacity: .08,
+                child: Image.asset(
+                  "assets/images/fog.png",
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
 
-        /////////////////////////////////////////////////////////////
-        // PARTÍCULAS
-        /////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////
+          // DESFOQUE
+          /////////////////////////////////////////////////////////////
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 2,
+                sigmaY: 2,
+              ),
+              child: Container(
+                color: Colors.transparent,
+              ),
+            ),
+          ),
 
-        IgnorePointer(
-          child: Stack(
-            children: List.generate(
-              180,
-              (i) => Positioned(
-                left: (i * 53 % 1500).toDouble(),
-                top: (i * 71 % 900).toDouble(),
-                child: Opacity(
-                  opacity: .18,
-                  child: Container(
-                    width: 2,
-                    height: 2,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
+          /////////////////////////////////////////////////////////////
+          // LUZ DO TETO
+          /////////////////////////////////////////////////////////////
+          Positioned(
+            top: 45,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Container(
+                width: 340,
+                height: 14,
+                decoration: BoxDecoration(
+                  color: Colors.white70,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withOpacity(.9),
+                      blurRadius: 70,
+                      spreadRadius: 14,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          /////////////////////////////////////////////////////////////
+          // PARTÍCULAS
+          /////////////////////////////////////////////////////////////
+          IgnorePointer(
+            child: Stack(
+              children: List.generate(
+                180,
+                (i) => Positioned(
+                  left: (i * 53 % 1500).toDouble(),
+                  top: (i * 71 % 900).toDouble(),
+                  child: Opacity(
+                    opacity: .18,
+                    child: Container(
+                      width: 2,
+                      height: 2,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
 
-        /////////////////////////////////////////////////////////////
-        // VINHETA
-        /////////////////////////////////////////////////////////////
-
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-              gradient: RadialGradient(
-                radius: 1.35,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(.15),
-                  Colors.black.withOpacity(.45),
-                ],
+          /////////////////////////////////////////////////////////////
+          // VINHETA
+          /////////////////////////////////////////////////////////////
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  radius: 1.35,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withOpacity(.15),
+                    Colors.black.withOpacity(.45),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
 
-        /////////////////////////////////////////////////////////////
-        // FORMULÁRIO
-        /////////////////////////////////////////////////////////////
+          /////////////////////////////////////////////////////////////
+          // FORMULÁRIO
+          /////////////////////////////////////////////////////////////
+          Center(
+            child: SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  minWidth: 500,
+                  maxWidth: 800,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(24),
 
-        Center(
-          child: SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(
-                minWidth: 500,
-                maxWidth: 800,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(24),
-
-                                  child: Container(
+                  child: Container(
                     padding: const EdgeInsets.all(32),
 
                     decoration: BoxDecoration(
@@ -234,7 +224,6 @@ Widget build(BuildContext context) {
                       ),
 
                       boxShadow: [
-
                         BoxShadow(
                           color: Colors.black.withOpacity(.45),
                           blurRadius: 35,
@@ -246,7 +235,6 @@ Widget build(BuildContext context) {
                           blurRadius: 60,
                           spreadRadius: 10,
                         ),
-
                       ],
                     ),
 
@@ -257,11 +245,9 @@ Widget build(BuildContext context) {
                         mainAxisSize: MainAxisSize.min,
 
                         children: [
-
                           //////////////////////////////////////////////////////
                           // LOGO M.E.G.
                           //////////////////////////////////////////////////////
-
                           Container(
                             width: 120,
                             height: 120,
@@ -277,13 +263,11 @@ Widget build(BuildContext context) {
                               ),
 
                               boxShadow: [
-
                                 BoxShadow(
                                   color: Colors.greenAccent.withOpacity(.45),
                                   blurRadius: 30,
                                   spreadRadius: 3,
                                 ),
-
                               ],
                             ),
 
@@ -316,7 +300,6 @@ Widget build(BuildContext context) {
                             ),
 
                             decoration: BoxDecoration(
-
                               color: Colors.black87,
 
                               borderRadius: BorderRadius.circular(6),
@@ -326,14 +309,11 @@ Widget build(BuildContext context) {
                               ),
 
                               boxShadow: [
-
                                 BoxShadow(
                                   color: Colors.amber.withOpacity(.25),
                                   blurRadius: 12,
                                 ),
-
                               ],
-
                             ),
 
                             child: const Text(
@@ -362,12 +342,9 @@ Widget build(BuildContext context) {
                             ),
 
                             child: const Column(
-
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
 
                               children: [
-
                                 Text(
                                   "STATUS : ONLINE",
                                   style: TextStyle(
@@ -395,9 +372,7 @@ Widget build(BuildContext context) {
                                     fontFamily: "monospace",
                                   ),
                                 ),
-
                               ],
-
                             ),
                           ),
 
@@ -406,7 +381,6 @@ Widget build(BuildContext context) {
                           //////////////////////////////////////////////////////
                           // CAMPO NOME
                           //////////////////////////////////////////////////////
-
                           TextFormField(
                             controller: fullNameController,
 
@@ -418,7 +392,6 @@ Widget build(BuildContext context) {
                             ),
 
                             decoration: InputDecoration(
-
                               labelText: "Nome completo",
 
                               floatingLabelStyle: const TextStyle(
@@ -429,16 +402,14 @@ Widget build(BuildContext context) {
                                 Icons.badge_outlined,
                               ),
 
-                              prefixIconColor:
-                                  const Color(0xFF00FF7F),
+                              prefixIconColor: const Color(0xFF00FF7F),
 
                               filled: true,
 
                               fillColor: const Color(0xFFF2EDB5),
 
                               border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.circular(4),
+                                borderRadius: BorderRadius.circular(4),
                               ),
 
                               enabledBorder: const OutlineInputBorder(
@@ -448,16 +419,12 @@ Widget build(BuildContext context) {
                                 ),
                               ),
 
-                              focusedBorder:
-                                  const OutlineInputBorder(
-
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFF00FF7F),
                                   width: 3,
                                 ),
-
                               ),
-
                             ),
 
                             validator: (value) {
@@ -470,10 +437,9 @@ Widget build(BuildContext context) {
 
                           const SizedBox(height: 20),
 
-                                                    //////////////////////////////////////////////////////
+                          //////////////////////////////////////////////////////
                           // CAMPO LOGIN
                           //////////////////////////////////////////////////////
-
                           TextFormField(
                             controller: loginController,
                             cursorColor: const Color(0xFF00FF7F),
@@ -492,8 +458,7 @@ Widget build(BuildContext context) {
 
                               prefixIcon: const Icon(Icons.person_outline),
 
-                              prefixIconColor:
-                                  const Color(0xFF00FF7F),
+                              prefixIconColor: const Color(0xFF00FF7F),
 
                               filled: true,
                               fillColor: const Color(0xFFF2EDB5),
@@ -502,16 +467,14 @@ Widget build(BuildContext context) {
                                 borderRadius: BorderRadius.circular(4),
                               ),
 
-                              enabledBorder:
-                                  const OutlineInputBorder(
+                              enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFF7C7646),
                                   width: 2,
                                 ),
                               ),
 
-                              focusedBorder:
-                                  const OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFF00FF7F),
                                   width: 3,
@@ -532,7 +495,6 @@ Widget build(BuildContext context) {
                           //////////////////////////////////////////////////////
                           // CAMPO SENHA
                           //////////////////////////////////////////////////////
-
                           TextFormField(
                             controller: passwordController,
                             obscureText: obscureText,
@@ -551,11 +513,9 @@ Widget build(BuildContext context) {
                                 color: Color(0xFF00FF7F),
                               ),
 
-                              prefixIcon:
-                                  const Icon(Icons.lock_outline),
+                              prefixIcon: const Icon(Icons.lock_outline),
 
-                              prefixIconColor:
-                                  const Color(0xFF00FF7F),
+                              prefixIconColor: const Color(0xFF00FF7F),
 
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -564,9 +524,7 @@ Widget build(BuildContext context) {
                                   });
                                 },
                                 icon: Icon(
-                                  obscureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
+                                  obscureText ? Icons.visibility : Icons.visibility_off,
                                   color: const Color(0xFF00FF7F),
                                 ),
                               ),
@@ -578,16 +536,14 @@ Widget build(BuildContext context) {
                                 borderRadius: BorderRadius.circular(4),
                               ),
 
-                              enabledBorder:
-                                  const OutlineInputBorder(
+                              enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFF7C7646),
                                   width: 2,
                                 ),
                               ),
 
-                              focusedBorder:
-                                  const OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFF00FF7F),
                                   width: 3,
@@ -603,34 +559,27 @@ Widget build(BuildContext context) {
                           //////////////////////////////////////////////////////
                           // BOTÃO CADASTRAR
                           //////////////////////////////////////////////////////
-
                           SizedBox(
                             width: double.infinity,
                             height: 65,
 
                             child: ElevatedButton(
-
                               style: ElevatedButton.styleFrom(
-
                                 backgroundColor: Colors.black,
 
-                                foregroundColor:
-                                    const Color(0xFF00FF7F),
+                                foregroundColor: const Color(0xFF00FF7F),
 
                                 elevation: 20,
 
-                                shadowColor:
-                                    const Color(0xFF00FF7F),
+                                shadowColor: const Color(0xFF00FF7F),
 
                                 shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(4),
+                                  borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
 
                               onPressed: () async {
-
-                                                                if (formKey.currentState!.validate()) {
+                                if (formKey.currentState!.validate()) {
                                   try {
                                     final supabase = Supabase.instance.client;
 
@@ -652,12 +601,9 @@ Widget build(BuildContext context) {
                                     );
 
                                     Navigator.of(context).pop();
-
                                   } on PostgrestException catch (e) {
-
                                     if (e.code == "23505") {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
+                                      ScaffoldMessenger.of(context).showSnackBar(
                                         const SnackBar(
                                           content: Text(
                                             "Login já está em uso",
@@ -666,11 +612,8 @@ Widget build(BuildContext context) {
                                         ),
                                       );
                                     }
-
                                   } catch (_) {
-
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         content: Text(
                                           "Falha ao realizar cadastro",
@@ -683,11 +626,9 @@ Widget build(BuildContext context) {
                               },
 
                               child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
 
                                 children: [
-
                                   Icon(
                                     Icons.login_rounded,
                                     size: 26,
@@ -702,16 +643,13 @@ Widget build(BuildContext context) {
                                       fontWeight: FontWeight.bold,
                                       letterSpacing: 3,
                                       shadows: [
-
                                         Shadow(
                                           color: Color(0xFF00FF7F),
                                           blurRadius: 18,
                                         ),
-
                                       ],
                                     ),
                                   ),
-
                                 ],
                               ),
                             ),
@@ -748,7 +686,6 @@ Widget build(BuildContext context) {
                           ),
 
                           const SizedBox(height: 20),
-
                         ],
                       ),
                     ),

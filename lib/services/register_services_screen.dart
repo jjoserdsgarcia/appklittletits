@@ -13,6 +13,7 @@ class _RegisterServicesScreenState extends State<RegisterServicesScreen> {
   final nameController = TextEditingController();
   final priceController = TextEditingController();
   final descriptionController = TextEditingController();
+  bool ativo = true;
 
   @override
   Widget build(BuildContext context) {

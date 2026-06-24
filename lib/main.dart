@@ -5,7 +5,7 @@ import 'package:appklittletits/screens/funcionario/cadastro_horario_screen.dart'
 import 'package:appklittletits/screens/funcionario/comissao_screen.dart';
 import 'package:appklittletits/screens/funcionario/concluir_agendamento_screen.dart';
 import 'package:appklittletits/screens/funcionario/horarios_trabalho_screen.dart';
-import 'package:appklittletits/screens/funcionario/servicos_screen.dart';
+import 'package:appklittletits/screens/funcionario/services_screen.dart';
 import 'package:appklittletits/services/register_services_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const HomeClientScreen(),
+      home: const ServicesScreen(),
     );
   }
 }
