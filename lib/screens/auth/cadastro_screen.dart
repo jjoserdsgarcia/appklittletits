@@ -384,10 +384,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                           TextFormField(
                             controller: fullNameController,
 
-                            cursorColor: const Color(0xFF00FF7F),
+                            cursorColor: const Color.fromARGB(255, 0, 0, 0),
 
                             style: const TextStyle(
-                              color: Color(0xFF00FF7F),
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.bold,
                             ),
 
@@ -395,14 +395,17 @@ class _CadastroScreenState extends State<CadastroScreen> {
                               labelText: "Nome completo",
 
                               floatingLabelStyle: const TextStyle(
-                                color: Color(0xFF00FF7F),
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
 
                               prefixIcon: const Icon(
                                 Icons.badge_outlined,
                               ),
 
-                              prefixIconColor: const Color(0xFF00FF7F),
+
+                              prefixIconColor:
+                                  const Color.fromARGB(255, 0, 0, 0),
+
 
                               filled: true,
 
@@ -442,10 +445,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                           //////////////////////////////////////////////////////
                           TextFormField(
                             controller: loginController,
-                            cursorColor: const Color(0xFF00FF7F),
+                            cursorColor: const Color.fromARGB(255, 0, 0, 0),
 
                             style: const TextStyle(
-                              color: Color(0xFF00FF7F),
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.bold,
                             ),
 
@@ -453,12 +456,15 @@ class _CadastroScreenState extends State<CadastroScreen> {
                               labelText: "Login",
 
                               floatingLabelStyle: const TextStyle(
-                                color: Color(0xFF00FF7F),
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
 
                               prefixIcon: const Icon(Icons.person_outline),
 
-                              prefixIconColor: const Color(0xFF00FF7F),
+
+                              prefixIconColor:
+                                  const Color.fromARGB(255, 0, 0, 0),
+
 
                               filled: true,
                               fillColor: const Color(0xFFF2EDB5),
@@ -499,10 +505,10 @@ class _CadastroScreenState extends State<CadastroScreen> {
                             controller: passwordController,
                             obscureText: obscureText,
 
-                            cursorColor: const Color(0xFF00FF7F),
+                            cursorColor: const Color.fromARGB(255, 0, 0, 0),
 
                             style: const TextStyle(
-                              color: Color(0xFF00FF7F),
+                              color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.bold,
                             ),
 
@@ -510,12 +516,15 @@ class _CadastroScreenState extends State<CadastroScreen> {
                               labelText: "Senha",
 
                               floatingLabelStyle: const TextStyle(
-                                color: Color(0xFF00FF7F),
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
 
                               prefixIcon: const Icon(Icons.lock_outline),
 
-                              prefixIconColor: const Color(0xFF00FF7F),
+
+                             
+                              prefixIconColor:
+                                  const Color.fromARGB(255, 0, 0, 0),
 
                               suffixIcon: IconButton(
                                 onPressed: () {
