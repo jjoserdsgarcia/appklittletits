@@ -1,6 +1,7 @@
 import 'package:appklittletits/screens/auth/login_screen.dart';
 import 'package:appklittletits/screens/cliente/home_cliente_screen.dart';
 import 'package:appklittletits/screens/cliente/horarios_screen.dart';
+import 'package:appklittletits/screens/cliente/servicos_screen.dart';
 import 'package:appklittletits/screens/funcionario/agendamentos_dia_screen.dart';
 import 'package:appklittletits/screens/funcionario/cadastro_horario_screen.dart';
 import 'package:appklittletits/screens/funcionario/comissao_screen.dart';
@@ -49,8 +50,7 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
 
-      home: const ServicesScreen(),
-     
+      home: const LoginScreen(),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:appklittletits/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeEmployeeScreen extends StatefulWidget {
@@ -10,6 +11,9 @@ class HomeEmployeeScreen extends StatefulWidget {
 class _HomeEmployeeScreenState extends State<HomeEmployeeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      drawer: LateralMenu(),
+      appBar: AppBar(),
+    );
   }
 }

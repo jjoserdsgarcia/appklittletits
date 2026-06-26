@@ -3,7 +3,6 @@ import 'package:appklittletits/screens/auth/cadastro_screen.dart';
 import 'package:appklittletits/screens/cliente/home_cliente_screen.dart';
 import 'package:appklittletits/screens/funcionario/home_funcionario_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
