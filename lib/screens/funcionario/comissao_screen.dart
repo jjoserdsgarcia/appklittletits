@@ -1,7 +1,30 @@
+// ===============================================================
+// IMPORTAÇÕES
+// ===============================================================
+
+// Biblioteca principal do Flutter.
+// Contém todos os widgets utilizados para criar a interface.
 import 'package:flutter/material.dart';
+
+// Biblioteca responsável por disponibilizar fontes do Google.
 import 'package:google_fonts/google_fonts.dart';
 
 
+
+// ===============================================================
+// TELA DE COMISSÃO
+// ===============================================================
+//
+// Tela responsável por exibir:
+//
+// • Comissão total;
+// • Faturamento;
+// • Quantidade de serviços;
+// • Histórico de produção;
+// • Seleção de período.
+//
+// Como existem informações que podem ser alteradas
+// durante o uso da tela, utilizamos um StatefulWidget.
 class ComissaoScreen extends StatefulWidget {
   const ComissaoScreen({super.key});
 
@@ -12,13 +35,42 @@ class ComissaoScreen extends StatefulWidget {
 
 
 
+// ===============================================================
+// ESTADO DA TELA
+// ===============================================================
+//
+// Nesta classe ficam todas as variáveis,
+// métodos e construção da interface.
 class _ComissaoScreenState
     extends State<ComissaoScreen> {
 
-
+  // =============================================================
+  // PERÍODO SELECIONADO
+  // =============================================================
+  //
+  // Guarda qual período está atualmente selecionado.
+  //
+  // O valor inicial é "ESTE MÊS".
   String periodo = "ESTE MÊS";
 
 
+
+  // =============================================================
+  // HISTÓRICO DE PRODUÇÃO
+  // =============================================================
+  //
+  // Lista contendo os serviços realizados.
+  //
+  // Cada item é um Map com:
+  //
+  // cliente
+  // servico
+  // valor
+  // comissao
+  // status
+  //
+  // Em um sistema real, essas informações
+  // normalmente viriam de um banco de dados.
   final List<Map<String,dynamic>> historico = [
 
     {
@@ -37,7 +89,6 @@ class _ComissaoScreenState
       "status":"PAGO"
     },
 
-
     {
       "cliente":"Carlos Lima",
       "servico":"Barba",
@@ -50,64 +101,105 @@ class _ComissaoScreenState
 
 
 
-
+  // =============================================================
+  // TOTAL DA COMISSÃO
+  // =============================================================
+  //
+  // Percorre todo o histórico somando apenas
+  // o valor das comissões.
+  //
+  // Retorna o valor total das comissões.
   double totalComissao(){
 
-    double total=0;
+    // Variável acumuladora.
+    double total = 0;
 
+    // Percorre cada item da lista.
     for(var item in historico){
 
+      // Soma a comissão do item atual.
       total += item["comissao"];
 
     }
 
+    // Retorna o total calculado.
     return total;
 
   }
 
 
 
-
+  // =============================================================
+  // FATURAMENTO TOTAL
+  // =============================================================
+  //
+  // Soma o valor de todas as vendas realizadas.
+  //
+  // Retorna o faturamento bruto.
   double faturamento(){
 
-    double total=0;
+    // Variável acumuladora.
+    double total = 0;
 
+    // Percorre todos os registros.
     for(var item in historico){
 
+      // Soma o valor da venda.
       total += item["valor"];
 
     }
 
+    // Retorna o faturamento final.
     return total;
 
   }
 
 
 
-
-
+  // =============================================================
+  // BUILD
+  // =============================================================
+  //
+  // Método responsável por construir toda a interface.
+  //
+  // Sempre que setState() for chamado,
+  // este método será executado novamente.
   @override
   Widget build(BuildContext context) {
 
 
+        // =============================================================
+    // SCAFFOLD
+    // =============================================================
+    //
+    // Estrutura principal da tela.
     return Scaffold(
 
 
+      // Cor de fundo da tela.
       backgroundColor:
       const Color(0xffE5DBA8),
 
 
 
+      // ===========================================================
+      // APPBAR
+      // ===========================================================
+      //
+      // Barra superior da aplicação.
       appBar: AppBar(
 
 
+        // Cor de fundo da AppBar.
         backgroundColor:
         const Color(0xffD6CC8F),
 
 
+        // Remove a sombra padrão da AppBar.
         elevation:0,
 
 
+        // Título exibido na barra superior.
         title:Text(
 
           "LEVEL 0 // COMISSÃO",
@@ -115,12 +207,15 @@ class _ComissaoScreenState
           style:
           GoogleFonts.spaceMono(
 
+            // Cor do texto.
             color:
             const Color(0xff423D2A),
 
+            // Deixa o texto em negrito.
             fontWeight:
             FontWeight.bold,
 
+            // Espaçamento entre as letras.
             letterSpacing:2,
 
           ),
@@ -132,12 +227,20 @@ class _ComissaoScreenState
 
 
 
+      // ===========================================================
+      // CORPO DA TELA
+      // ===========================================================
       body:Stack(
 
         children:[
 
 
 
+          // =======================================================
+          // FUNDO DA TELA
+          // =======================================================
+          //
+          // Container responsável pelo gradiente de fundo.
           Container(
 
             decoration:
@@ -153,9 +256,11 @@ class _ComissaoScreenState
 
                 ],
 
+                // Início do gradiente.
                 begin:
                 Alignment.topCenter,
 
+                // Final do gradiente.
                 end:
                 Alignment.bottomCenter,
 
@@ -170,16 +275,22 @@ class _ComissaoScreenState
 
 
 
+          // =======================================================
+          // SAFE AREA
+          // =======================================================
+          //
+          // Evita que o conteúdo fique atrás
+          // da barra de status do aparelho.
           SafeArea(
 
             child:
             SingleChildScrollView(
 
-
+              // Espaçamento interno da tela.
               padding:
               const EdgeInsets.all(18),
 
-
+              // Organiza os widgets verticalmente.
               child:
               Column(
 
@@ -189,6 +300,12 @@ class _ComissaoScreenState
 
 
 
+                  // =================================================
+                  // PAINEL PRINCIPAL
+                  // =================================================
+                  //
+                  // Exibe o título do sistema
+                  // e o valor total da comissão.
                   _painel(
 
                     Column(
@@ -196,6 +313,7 @@ class _ComissaoScreenState
                       children:[
 
 
+                        // Nome do sistema.
                         Text(
 
                           "EMPLOYEE REWARD SYSTEM",
@@ -215,11 +333,13 @@ class _ComissaoScreenState
                         ),
 
 
+                                                // Texto indicando a seção da comissão.
                         const SizedBox(
                             height:12),
 
 
 
+                        // Subtítulo do painel principal.
                         Text(
 
                           "COMISSÃO ATUAL",
@@ -231,12 +351,18 @@ class _ComissaoScreenState
 
 
 
+                        // Espaçamento entre o subtítulo
+                        // e o valor da comissão.
                         const SizedBox(
                             height:8),
 
 
 
 
+                        // Exibe o valor total das comissões.
+                        //
+                        // O método totalComissao() soma todas
+                        // as comissões presentes na lista.
                         Text(
 
                           "R\$ ${totalComissao().toStringAsFixed(2)}",
@@ -264,7 +390,8 @@ class _ComissaoScreenState
 
 
 
-
+                  // Espaçamento entre o painel principal
+                  // e os cartões informativos.
                   const SizedBox(
                       height:18),
 
@@ -273,12 +400,14 @@ class _ComissaoScreenState
 
 
 
-
+                  // Linha contendo os contadores.
                   Row(
 
                     children:[
 
 
+                      // Card com a quantidade
+                      // de serviços realizados.
                       Expanded(
 
                         child:
@@ -300,6 +429,7 @@ class _ComissaoScreenState
 
 
 
+                      // Card mostrando o faturamento total.
                       Expanded(
 
                         child:
@@ -322,7 +452,8 @@ class _ComissaoScreenState
 
 
 
-
+                  // Espaçamento antes do painel
+                  // de seleção do período.
                   const SizedBox(
                       height:20),
 
@@ -331,6 +462,7 @@ class _ComissaoScreenState
 
 
 
+                  // Painel para seleção do período.
                   _painel(
 
                     Column(
@@ -342,6 +474,7 @@ class _ComissaoScreenState
                       children:[
 
 
+                        // Título da seção.
                         Text(
 
                           "PERÍODO DE ANÁLISE",
@@ -364,10 +497,13 @@ class _ComissaoScreenState
 
 
 
+                        // Linha contendo os botões
+                        // de seleção do período.
                         Row(
 
                           children:[
 
+                            // Botão "HOJE".
                             _periodo(
                                 "HOJE"),
 
@@ -376,6 +512,7 @@ class _ComissaoScreenState
                                 width:8),
 
 
+                            // Botão "ESTE MÊS".
                             _periodo(
                                 "ESTE MÊS"),
 
@@ -384,6 +521,7 @@ class _ComissaoScreenState
                                 width:8),
 
 
+                            // Botão "ANO".
                             _periodo(
                                 "ANO"),
 
@@ -405,7 +543,7 @@ class _ComissaoScreenState
 
 
 
-
+                  // Espaçamento antes do histórico.
                   const SizedBox(
                       height:20),
 
@@ -414,6 +552,8 @@ class _ComissaoScreenState
 
 
 
+                  // Alinha o título do histórico
+                  // à esquerda da tela.
                   Align(
 
                     alignment:
@@ -444,6 +584,8 @@ class _ComissaoScreenState
 
 
 
+                  // Espaçamento entre o título
+                  // e a lista.
                   const SizedBox(
                       height:12),
 
@@ -452,30 +594,43 @@ class _ComissaoScreenState
 
 
 
+                  // Lista com todo o histórico
+                  // de serviços realizados.
                   ListView.builder(
 
+                    // Faz a lista ocupar somente
+                    // o espaço necessário.
                     shrinkWrap:true,
 
+                    // Desativa a rolagem própria,
+                    // utilizando a do SingleChildScrollView.
                     physics:
                     const NeverScrollableScrollPhysics(),
 
 
+                    // Quantidade de registros.
                     itemCount:
                     historico.length,
 
 
+                    // Constrói cada item da lista.
                     itemBuilder:
                     (context,index){
 
 
+                      // Obtém o item correspondente
+                      // ao índice atual.
                       final item =
                       historico[index];
 
 
 
+                      // Card do histórico.
                       return Container(
 
 
+                        // Espaçamento inferior
+                        // entre os cards.
                         margin:
                         const EdgeInsets.only(
                             bottom:12),
@@ -485,15 +640,18 @@ class _ComissaoScreenState
                         decoration:
                         BoxDecoration(
 
+                          // Cor de fundo.
                           color:
                           const Color(
                               0xffF8F1C7),
 
+                          // Bordas arredondadas.
                           borderRadius:
                           BorderRadius.circular(
                               20),
 
 
+                          // Sombra do card.
                           boxShadow:[
 
                             BoxShadow(
@@ -517,15 +675,19 @@ class _ComissaoScreenState
 
 
 
+                        // Organiza automaticamente
+                        // os elementos do card.
                         child:
                         ListTile(
 
 
+                          // Espaçamento interno.
                           contentPadding:
                           const EdgeInsets.all(16),
 
 
 
+                          // Ícone exibido à esquerda.
                           leading:
                           CircleAvatar(
 
@@ -548,6 +710,7 @@ class _ComissaoScreenState
 
 
 
+                          // Nome do cliente.
                           title:
                           Text(
 
@@ -566,6 +729,8 @@ class _ComissaoScreenState
 
 
 
+                          // Serviço realizado
+                          // e valor da venda.
                           subtitle:
                           Text(
 
@@ -578,6 +743,7 @@ class _ComissaoScreenState
 
 
 
+                          // Exibe comissão e status.
                           trailing:
                           Column(
 
@@ -587,6 +753,7 @@ class _ComissaoScreenState
                             children:[
 
 
+                              // Valor da comissão.
                               Text(
 
                                 "R\$${item["comissao"]}",
@@ -605,6 +772,7 @@ class _ComissaoScreenState
                               ),
 
 
+                              // Situação da comissão.
                               Text(
 
                                 item["status"],
@@ -638,7 +806,7 @@ class _ComissaoScreenState
 
 
 
-                ],
+                                ],
 
               ),
 
@@ -661,14 +829,24 @@ class _ComissaoScreenState
 
 
 
-
+  // =============================================================
+  // MÉTODO _painel()
+  // =============================================================
+  //
+  // Responsável por criar os painéis utilizados
+  // em toda a tela.
+  //
+  // Recebe qualquer Widget como conteúdo
+  // através do parâmetro "child".
   Widget _painel(Widget child){
 
     return Container(
 
+      // Faz o painel ocupar toda a largura disponível.
       width:
       double.infinity,
 
+      // Espaçamento interno.
       padding:
       const EdgeInsets.all(20),
 
@@ -676,16 +854,17 @@ class _ComissaoScreenState
       decoration:
       BoxDecoration(
 
+        // Cor de fundo do painel.
         color:
         const Color(
             0xffF8F1C7)
             .withOpacity(.93),
 
-
+        // Bordas arredondadas.
         borderRadius:
         BorderRadius.circular(22),
 
-
+        // Sombra do painel.
         boxShadow:[
 
           BoxShadow(
@@ -704,7 +883,7 @@ class _ComissaoScreenState
 
       ),
 
-
+      // Conteúdo recebido pelo método.
       child:child,
 
     );
@@ -715,6 +894,16 @@ class _ComissaoScreenState
 
 
 
+  // =============================================================
+  // MÉTODO _contador()
+  // =============================================================
+  //
+  // Cria os pequenos cartões informativos
+  // exibidos abaixo da comissão.
+  //
+  // Exemplo:
+  // SERVIÇOS
+  // FATURADO
   Widget _contador(
       String titulo,
       String valor){
@@ -722,6 +911,7 @@ class _ComissaoScreenState
 
     return Container(
 
+      // Espaçamento interno.
       padding:
       const EdgeInsets.all(18),
 
@@ -729,10 +919,12 @@ class _ComissaoScreenState
       decoration:
       BoxDecoration(
 
+        // Cor de fundo.
         color:
         const Color(
             0xffEFE2A8),
 
+        // Bordas arredondadas.
         borderRadius:
         BorderRadius.circular(18),
 
@@ -744,7 +936,7 @@ class _ComissaoScreenState
 
         children:[
 
-
+          // Título do contador.
           Text(
 
             titulo,
@@ -760,11 +952,13 @@ class _ComissaoScreenState
 
 
 
+          // Espaçamento entre título e valor.
           const SizedBox(
               height:8),
 
 
 
+          // Valor apresentado.
           Text(
 
             valor,
@@ -795,19 +989,33 @@ class _ComissaoScreenState
 
 
 
-
+  // =============================================================
+  // MÉTODO _periodo()
+  // =============================================================
+  //
+  // Cria um botão para selecionar
+  // o período da análise.
+  //
+  // Os botões são:
+  // • HOJE
+  // • ESTE MÊS
+  // • ANO
   Widget _periodo(String texto){
 
+    // Verifica se este botão é o período selecionado.
     bool ativo =
         periodo == texto;
 
 
     return GestureDetector(
 
+      // Executado quando o botão é pressionado.
       onTap:(){
 
+        // Atualiza a interface.
         setState((){
 
+          // Salva o novo período selecionado.
           periodo = texto;
 
         });
@@ -818,6 +1026,7 @@ class _ComissaoScreenState
       child:
       Container(
 
+        // Espaçamento interno.
         padding:
         const EdgeInsets.symmetric(
 
@@ -831,6 +1040,8 @@ class _ComissaoScreenState
         decoration:
         BoxDecoration(
 
+          // Altera a cor conforme o estado
+          // do botão (ativo ou inativo).
           color:
           ativo
 
@@ -842,7 +1053,7 @@ class _ComissaoScreenState
           const Color(
               0xffEFE2A8),
 
-
+          // Bordas arredondadas.
           borderRadius:
           BorderRadius.circular(12),
 
@@ -857,6 +1068,8 @@ class _ComissaoScreenState
           style:
           TextStyle(
 
+            // Cor do texto muda
+            // quando o botão está ativo.
             color:
             ativo
             ?
@@ -879,3 +1092,23 @@ class _ComissaoScreenState
 
 
 }
+
+// =============================================================
+// FIM DO ARQUIVO
+// =============================================================
+//
+// Fluxo da tela:
+//
+// 1. Os dados do histórico são carregados.
+// 2. totalComissao() calcula a soma das comissões.
+// 3. faturamento() calcula o valor total faturado.
+// 4. O build() monta toda a interface.
+// 5. O usuário pode selecionar um período.
+// 6. A lista exibe o histórico de produção.
+// 7. Os métodos _painel(), _contador() e _periodo()
+//    reutilizam componentes visuais, evitando repetição
+//    de código.
+//
+// Nenhuma linha do funcionamento original foi alterada.
+// Apenas foram adicionados comentários para facilitar
+// o entendimento do código.
