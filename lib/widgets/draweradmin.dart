@@ -3,10 +3,13 @@ import 'package:appklittletits/screens/cliente/meus_agendamentos_screen.dart';
 import 'package:appklittletits/screens/cliente/novo_agendamento_screen.dart';
 import 'package:appklittletits/screens/cliente/profissionais_screen.dart';
 import 'package:appklittletits/screens/cliente/servicos_screen.dart';
+import 'package:appklittletits/screens/funcionario/home_funcionario_screen.dart';
+import 'package:appklittletits/screens/funcionario/horarios_trabalho_screen.dart';
+import 'package:appklittletits/screens/funcionario/services_screen.dart';
 import 'package:flutter/material.dart';
 
-class LateralMenu extends StatelessWidget {
-  const LateralMenu({super.key});
+class LateralMenuEmployee extends StatelessWidget {
+  const LateralMenuEmployee({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class LateralMenu extends StatelessWidget {
               color: Colors.blue,
             ),
             child: Text(
-              'Menu do Cliente',
+              'Menu do Funcionário',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -29,29 +32,11 @@ class LateralMenu extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.home),
             title: Text('Home'),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: Icon(Icons.book),
-            title: Text('Agendar Serviço'),
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return NovoAgendamentoScreen();
-                  },
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.history),
-            title: Text('Histórico de Agendamentos'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return MyAgendaScreen(dia: '', barbeiro: '', horario: '', servico: '',);
+                    return HomeEmployeeScreen();
                   },
                 ),
               );
@@ -65,7 +50,7 @@ class LateralMenu extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return AvailableAgenda(servico: '',);
+                    return HorariosTrabalhoScreen();
                   },
                 ),
               );
@@ -78,20 +63,7 @@ class LateralMenu extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return AvailableServicesScreen();
-                  },
-                ),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.history),
-            title: Text('Profissionais'),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return ProfessionalsScreen();
+                    return ServicesScreen();
                   },
                 ),
               );

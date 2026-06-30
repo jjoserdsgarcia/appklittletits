@@ -1,6 +1,7 @@
 import 'package:appklittletits/models/service.dart';
 import 'package:appklittletits/services/register_services_screen.dart';
-import 'package:appklittletits/widgets/drawer.dart';
+
+import 'package:appklittletits/widgets/draweradmin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -44,7 +45,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: LateralMenu(),
+      drawer: LateralMenuEmployee(),
       appBar: AppBar(
         title: Text("Serviços registrados"),
       ),

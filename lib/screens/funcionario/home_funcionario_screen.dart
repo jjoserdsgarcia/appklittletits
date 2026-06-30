@@ -3,12 +3,12 @@
 // ===============================================================
 
 // Importa o menu lateral personalizado da aplicação.
-import 'package:appklittletits/widgets/drawer.dart';
 
 // Biblioteca principal do Flutter.
+
+import 'package:appklittletits/widgets/draweradmin.dart';
+
 import 'package:flutter/material.dart';
-
-
 
 // ===============================================================
 // TELA INICIAL DO FUNCIONÁRIO
@@ -30,8 +30,6 @@ class HomeEmployeeScreen extends StatefulWidget {
   State<HomeEmployeeScreen> createState() => _HomeEmployeeScreenState();
 }
 
-
-
 // ===============================================================
 // ESTADO DA TELA
 // ===============================================================
@@ -39,7 +37,6 @@ class HomeEmployeeScreen extends StatefulWidget {
 // Nesta classe ficará toda a lógica e interface
 // da tela inicial do funcionário.
 class _HomeEmployeeScreenState extends State<HomeEmployeeScreen> {
-
   // =============================================================
   // BUILD
   // =============================================================
@@ -48,29 +45,14 @@ class _HomeEmployeeScreenState extends State<HomeEmployeeScreen> {
   // toda a interface da tela.
   @override
   Widget build(BuildContext context) {
-
     // ===========================================================
     // SCAFFOLD
     // ===========================================================
     //
     // Estrutura principal da tela.
     return Scaffold(
-
-      // =========================================================
-      // MENU LATERAL
-      // =========================================================
-      //
-      // Drawer exibido ao deslizar a tela
-      // ou tocar no botão do menu.
-      drawer: LateralMenu(),
-
-      // =========================================================
-      // APPBAR
-      // =========================================================
-      //
-      // Barra superior da aplicação.
+      drawer: LateralMenuEmployee(),
       appBar: AppBar(),
-
     );
   }
 }

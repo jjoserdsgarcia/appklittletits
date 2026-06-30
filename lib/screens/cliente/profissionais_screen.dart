@@ -1,975 +1,260 @@
-import 'package:appklittletits/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
-
 class ProfessionalsScreen extends StatefulWidget {
-
   const ProfessionalsScreen({
     super.key,
   });
 
-
   @override
-  State<ProfessionalsScreen> createState() =>
-      _ProfessionalsScreenState();
-
+  State<ProfessionalsScreen> createState() => _ProfessionalsScreenState();
 }
 
-
-
-
-
-class _ProfessionalsScreenState
-    extends State<ProfessionalsScreen> {
-
-
-
-  final List<Map<String,dynamic>> profissionais = [
-
-
+class _ProfessionalsScreenState extends State<ProfessionalsScreen> {
+  final List<Map<String, dynamic>> profissionais = [
     {
+      "nome": "João Silva",
 
+      "cargo": "Barbeiro Master",
 
-      "nome":
-      "João Silva",
+      "especialidade": "Cortes modernos e barba",
 
+      "tempo": "8 anos de experiência",
 
-      "cargo":
-      "Barbeiro Master",
-
-
-      "especialidade":
-      "Cortes modernos e barba",
-
-
-      "tempo":
-      "8 anos de experiência",
-
-
-      "disponivel":
-      true,
-
-
+      "disponivel": true,
     },
 
-
-
-
-
     {
+      "nome": "Carlos Mendes",
 
+      "cargo": "Especialista Fade",
 
-      "nome":
-      "Carlos Mendes",
+      "especialidade": "Degradê e cortes atuais",
 
+      "tempo": "5 anos de experiência",
 
-      "cargo":
-      "Especialista Fade",
-
-
-      "especialidade":
-      "Degradê e cortes atuais",
-
-
-      "tempo":
-      "5 anos de experiência",
-
-
-      "disponivel":
-      true,
-
-
+      "disponivel": true,
     },
 
-
-
-
-
     {
+      "nome": "Lucas Oliveira",
 
+      "cargo": "Barbeiro",
 
-      "nome":
-      "Lucas Oliveira",
+      "especialidade": "Cortes clássicos",
 
+      "tempo": "3 anos de experiência",
 
-      "cargo":
-      "Barbeiro",
-
-
-      "especialidade":
-      "Cortes clássicos",
-
-
-      "tempo":
-      "3 anos de experiência",
-
-
-      "disponivel":
-      false,
-
-
+      "disponivel": false,
     },
-
-
   ];
-
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return Scaffold(
+      backgroundColor: const Color(0xffD9CB8B),
 
+      appBar: AppBar(
+        backgroundColor: const Color(0xff4E492F),
 
-
-      drawer:
-      const LateralMenu(),
-
-
-
-
-      backgroundColor:
-      const Color(0xffD9CB8B),
-
-
-
-
-
-      appBar:
-
-
-      AppBar(
-
-
-        backgroundColor:
-        const Color(0xff4E492F),
-
-
-        iconTheme:
-        const IconThemeData(
-
-          color:Colors.white,
-
+        iconTheme: const IconThemeData(
+          color: Colors.white,
         ),
 
-
-
-
-        title:
-
-        Text(
-
-
+        title: Text(
           "PROFISSIONAIS",
 
+          style: GoogleFonts.spaceMono(
+            color: Colors.white,
 
+            fontWeight: FontWeight.bold,
 
-          style:
-
-          GoogleFonts.spaceMono(
-
-
-
-            color:
-
-            Colors.white,
-
-
-
-            fontWeight:
-
-            FontWeight.bold,
-
-
-
-            letterSpacing:
-
-            2,
-
-
-
+            letterSpacing: 2,
           ),
-
-
-
         ),
-
-
-
       ),
 
-
-
-
-
-
-
-      body:
-
-
-      Stack(
-
-
-
-        children:[
-
-
-
-
-
+      body: Stack(
+        children: [
           Container(
-
-
-
-            decoration:
-
-            const BoxDecoration(
-
-
-
-              gradient:
-
-              LinearGradient(
-
-
-
-                colors:[
-
-
-
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
                   Color(0xffF5EDBE),
 
-
-
                   Color(0xffCDBB79),
-
-
-
                 ],
 
+                begin: Alignment.topCenter,
 
-
-                begin:
-
-                Alignment.topCenter,
-
-
-
-                end:
-
-                Alignment.bottomCenter,
-
-
-
+                end: Alignment.bottomCenter,
               ),
-
-
-
             ),
-
-
-
           ),
 
-
-
-
-
-
-
           Padding(
+            padding: const EdgeInsets.all(18),
 
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
 
-
-            padding:
-
-            const EdgeInsets.all(18),
-
-
-
-
-            child:
-
-
-            Column(
-
-
-
-              crossAxisAlignment:
-
-              CrossAxisAlignment.start,
-
-
-
-
-              children:[
-
-
-
-
-
+              children: [
                 Text(
-
-
-
                   "EQUIPE DISPONÍVEL",
 
+                  style: GoogleFonts.spaceMono(
+                    fontWeight: FontWeight.bold,
 
-
-                  style:
-
-                  GoogleFonts.spaceMono(
-
-
-
-                    fontWeight:
-
-                    FontWeight.bold,
-
-
-
-                    letterSpacing:
-
-                    2,
-
-
-
+                    letterSpacing: 2,
                   ),
-
-
-
                 ),
 
-
-
-
-
-
-                const SizedBox(
-                    height:10),
-
-
-
-
-
+                const SizedBox(height: 10),
 
                 Text(
-
-
-
                   "Conheça nossos profissionais antes de agendar.",
 
-
-
-                  style:
-
-                  GoogleFonts.spaceMono(
-
-
-
-                    fontSize:
-
-                    12,
-
-
-
+                  style: GoogleFonts.spaceMono(
+                    fontSize: 12,
                   ),
-
-
-
                 ),
 
-
-
-
-
-
-
-                const SizedBox(
-                    height:20),
-
-
-
-
-
-
+                const SizedBox(height: 20),
 
                 Expanded(
+                  child: ListView.builder(
+                    itemCount: profissionais.length,
 
-
-
-                  child:
-
-
-                  ListView.builder(
-
-
-
-                    itemCount:
-
-                    profissionais.length,
-
-
-
-
-                    itemBuilder:(context,index){
-
-
-
-                      final item =
-
-                      profissionais[index];
-
-
-
-
-
-
+                    itemBuilder: (context, index) {
+                      final item = profissionais[index];
 
                       return Container(
+                        margin: const EdgeInsets.only(bottom: 15),
 
+                        padding: const EdgeInsets.all(18),
 
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF8F1C7),
 
-                        margin:
+                          borderRadius: BorderRadius.circular(25),
 
-                        const EdgeInsets.only(
-                            bottom:15),
-
-
-
-
-                        padding:
-
-                        const EdgeInsets.all(18),
-
-
-
-
-
-                        decoration:
-
-
-                        BoxDecoration(
-
-
-
-                          color:
-
-                          const Color(0xffF8F1C7),
-
-
-
-
-                          borderRadius:
-
-                          BorderRadius.circular(25),
-
-
-
-
-
-                          boxShadow:[
-
-
-
+                          boxShadow: [
                             BoxShadow(
+                              color: Colors.black.withOpacity(.15),
 
+                              blurRadius: 15,
 
-
-                              color:
-
-                              Colors.black.withOpacity(.15),
-
-
-
-                              blurRadius:
-
-                              15,
-
-
-
-                              offset:
-
-                              const Offset(0,8),
-
-
-
-                            )
-
-
-
+                              offset: const Offset(0, 8),
+                            ),
                           ],
-
-
-
                         ),
 
-
-
-
-
-
-
-                        child:
-
-
-                        Row(
-
-
-
-                          children:[
-
-
-
-
-
+                        child: Row(
+                          children: [
                             CircleAvatar(
+                              radius: 32,
 
+                              backgroundColor: const Color(0xffD6CC8F),
 
-
-                              radius:
-
-                              32,
-
-
-
-
-                              backgroundColor:
-
-                              const Color(0xffD6CC8F),
-
-
-
-
-                              child:
-
-                              const Icon(
-
-
-
+                              child: const Icon(
                                 Icons.person,
 
+                                size: 35,
 
-
-                                size:
-
-                                35,
-
-
-
-                                color:
-
-                                Color(0xff4E492F),
-
-
-
+                                color: Color(0xff4E492F),
                               ),
-
-
-
                             ),
 
-
-
-
-
-
-
-
-                            const SizedBox(
-                                width:15),
-
-
-
-
-
-
+                            const SizedBox(width: 15),
 
                             Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
 
-
-
-                              child:
-
-                              Column(
-
-
-
-                                crossAxisAlignment:
-
-                                CrossAxisAlignment.start,
-
-
-
-
-                                children:[
-
-
-
-
-
+                                children: [
                                   Text(
-
-
-
                                     item["nome"],
 
+                                    style: GoogleFonts.spaceMono(
+                                      fontWeight: FontWeight.bold,
 
-
-                                    style:
-
-                                    GoogleFonts.spaceMono(
-
-
-
-                                      fontWeight:
-
-                                      FontWeight.bold,
-
-
-
-                                      fontSize:
-
-                                      15,
-
-
-
+                                      fontSize: 15,
                                     ),
-
-
-
                                   ),
 
-
-
-
-
-
-
-                                  const SizedBox(
-                                      height:5),
-
-
-
-
-
-
+                                  const SizedBox(height: 5),
 
                                   Text(
-
-
-
                                     item["cargo"],
 
-
-
-                                    style:
-
-                                    const TextStyle(
-
-                                      fontWeight:
-
-                                      FontWeight.bold,
-
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
-
-
-
                                   ),
 
-
-
-
-
-
-
-
-                                  const SizedBox(
-                                      height:8),
-
-
-
-
-
-
-
+                                  const SizedBox(height: 8),
 
                                   Text(
-
-
-
                                     item["especialidade"],
 
-
-
-                                    style:
-
-                                    const TextStyle(
-
-                                      fontSize:
-
-                                      12,
-
+                                    style: const TextStyle(
+                                      fontSize: 12,
                                     ),
-
-
-
                                   ),
 
-
-
-
-
-
-
-                                  const SizedBox(
-                                      height:5),
-
-
-
-
-
-
+                                  const SizedBox(height: 5),
 
                                   Text(
-
-
-
                                     item["tempo"],
 
+                                    style: const TextStyle(
+                                      fontSize: 12,
 
-
-                                    style:
-
-                                    const TextStyle(
-
-                                      fontSize:
-
-                                      12,
-
-                                      color:
-
-                                      Colors.black54,
-
+                                      color: Colors.black54,
                                     ),
-
-
-
                                   ),
 
-
-
-
-
-
-
-                                  const SizedBox(
-                                      height:12),
-
-
-
-
-
-
+                                  const SizedBox(height: 12),
 
                                   Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 12,
 
-
-
-                                    padding:
-
-                                    const EdgeInsets.symmetric(
-
-                                      horizontal:
-
-                                      12,
-
-
-                                      vertical:
-
-                                      6,
-
-
+                                      vertical: 6,
                                     ),
 
+                                    decoration: BoxDecoration(
+                                      color: item["disponivel"] ? Colors.green.withOpacity(.15) : Colors.red.withOpacity(.15),
 
-
-
-                                    decoration:
-
-                                    BoxDecoration(
-
-
-
-                                      color:
-
-                                      item["disponivel"]
-
-                                      ?
-
-                                      Colors.green.withOpacity(.15)
-
-                                      :
-
-                                      Colors.red.withOpacity(.15),
-
-
-
-
-                                      borderRadius:
-
-                                      BorderRadius.circular(20),
-
-
-
+                                      borderRadius: BorderRadius.circular(20),
                                     ),
 
+                                    child: Text(
+                                      item["disponivel"] ? "DISPONÍVEL" : "OCUPADO",
 
+                                      style: TextStyle(
+                                        color: item["disponivel"] ? Colors.green : Colors.red,
 
+                                        fontWeight: FontWeight.bold,
 
-
-                                    child:
-
-
-                                    Text(
-
-
-
-                                      item["disponivel"]
-
-                                      ?
-
-                                      "DISPONÍVEL"
-
-                                      :
-
-                                      "OCUPADO",
-
-
-
-
-                                      style:
-
-                                      TextStyle(
-
-
-
-                                        color:
-
-                                        item["disponivel"]
-
-                                        ?
-
-                                        Colors.green
-
-                                        :
-
-                                        Colors.red,
-
-
-
-                                        fontWeight:
-
-                                        FontWeight.bold,
-
-
-
-                                        fontSize:
-
-                                        11,
-
-
-
+                                        fontSize: 11,
                                       ),
-
-
-
                                     ),
-
-
-
-                                  )
-
-
-
-
-
-
+                                  ),
                                 ],
-
-
-
                               ),
-
-
-
-                            )
-
-
-
-
-
-
+                            ),
                           ],
-
-
-
                         ),
-
-
-
                       );
-
-
-
-
                     },
-
-
-
                   ),
-
-
-
-                )
-
-
-
+                ),
               ],
-
-
-
             ),
-
-
-
-          )
-
-
-
+          ),
         ],
-
-
-
       ),
-
-
-
     );
-
-
-
   }
-
-
-
 }

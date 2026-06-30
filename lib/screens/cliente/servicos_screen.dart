@@ -1,5 +1,5 @@
 import 'package:appklittletits/models/service.dart';
-import 'package:appklittletits/widgets/drawer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -45,9 +45,8 @@ class _AvailableServicesScreenState extends State<AvailableServicesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: LateralMenu(),
       appBar: AppBar(
-        title: Text("Tela Esportes"),
+        title: Text("Serviços Disponíveis"),
       ),
       body: Center(
         child: ConstrainedBox(
