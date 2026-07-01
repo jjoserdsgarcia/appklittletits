@@ -1,4 +1,4 @@
-import 'package:appklittletits/screens/cliente/horarios_screen.dart';
+import 'package:appklittletits/screens/funcionario/horarios_screen.dart';
 import 'package:appklittletits/screens/cliente/meus_agendamentos_screen.dart';
 import 'package:appklittletits/screens/cliente/novo_agendamento_screen.dart';
 import 'package:appklittletits/screens/cliente/profissionais_screen.dart';

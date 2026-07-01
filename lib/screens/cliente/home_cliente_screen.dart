@@ -1,4 +1,5 @@
 import 'package:appklittletits/models/service.dart';
+import 'package:appklittletits/screens/cliente/novo_agendamento_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -67,6 +68,26 @@ class _HomeClientScreenState extends State<HomeClientScreen> {
             },
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return NovoAgendamentoScreen();
+                  },
+                ),
+              )
+              .then(
+                (value) {
+                  if (value != null) {
+                    print("value: $value");
+                  }
+                  NovoAgendamentoScreen();
+                },
+              );
+        },
       ),
     );
   }
