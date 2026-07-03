@@ -1,3 +1,4 @@
+import 'package:appklittletits/screens/cliente/servicos_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -41,7 +42,7 @@ class _ProfessionalsScreenState extends State<ProfessionalsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Serviços Disponíveis"),
+        title: Text("Funcionarios Disponíveis"),
       ),
       body: Center(
         child: ConstrainedBox(
@@ -52,11 +53,22 @@ class _ProfessionalsScreenState extends State<ProfessionalsScreen> {
             itemCount: professionals.length,
             itemBuilder: (context, index) {
               final user.User currentProfessionals = professionals[index];
-              return Card(
-                elevation: 8.0,
-                child: ListTile(
-                  leading: Icon(Icons.sports_basketball),
-                  title: Text(currentProfessionals.fullName),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return AvailableServicesScreen();
+                      },
+                    ),
+                  );
+                },
+                child: Card(
+                  elevation: 8.0,
+                  child: ListTile(
+                    leading: Icon(Icons.sports_basketball),
+                    title: Text(currentProfessionals.fullName),
+                  ),
                 ),
               );
             },

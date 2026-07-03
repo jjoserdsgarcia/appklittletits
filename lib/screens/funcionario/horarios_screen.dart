@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AvailableAgenda extends StatefulWidget {
-  final String servico;
-
   const AvailableAgenda({
     super.key,
-
-    required this.servico,
   });
 
   @override
@@ -18,6 +14,10 @@ class AvailableAgenda extends StatefulWidget {
 class _AvailableAgendaState extends State<AvailableAgenda> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Horários disponíveis"),
+      ),
+    );
   }
 }

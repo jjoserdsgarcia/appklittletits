@@ -1,5 +1,6 @@
 import 'package:appklittletits/models/service.dart';
-
+import 'package:appklittletits/models/user.dart' as user;
+import 'package:appklittletits/screens/funcionario/horarios_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -57,12 +58,23 @@ class _AvailableServicesScreenState extends State<AvailableServicesScreen> {
             itemCount: services.length,
             itemBuilder: (context, index) {
               final Service currentService = services[index];
-              return Card(
-                elevation: 8.0,
-                child: ListTile(
-                  leading: Icon(Icons.sports_basketball),
-                  title: Text(currentService.description),
-                  subtitle: Text("Preço: ${currentService.price}"),
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return AvailableAgenda();
+                      },
+                    ),
+                  );
+                },
+                child: Card(
+                  elevation: 8.0,
+                  child: ListTile(
+                    leading: Icon(Icons.sports_basketball),
+                    title: Text(currentService.description),
+                    subtitle: Text("Preço: ${currentService.price}"),
+                  ),
                 ),
               );
             },

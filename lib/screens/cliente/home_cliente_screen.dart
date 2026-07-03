@@ -1,8 +1,10 @@
 import 'package:appklittletits/models/service.dart';
 import 'package:appklittletits/screens/cliente/novo_agendamento_screen.dart';
+import 'package:appklittletits/screens/cliente/profissionais_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:appklittletits/models/user.dart' as user;
 
 class HomeClientScreen extends StatefulWidget {
   const HomeClientScreen({
@@ -75,7 +77,7 @@ class _HomeClientScreenState extends State<HomeClientScreen> {
               .push(
                 MaterialPageRoute(
                   builder: (context) {
-                    return NovoAgendamentoScreen();
+                    return ProfessionalsScreen();
                   },
                 ),
               )
@@ -84,7 +86,7 @@ class _HomeClientScreenState extends State<HomeClientScreen> {
                   if (value != null) {
                     print("value: $value");
                   }
-                  NovoAgendamentoScreen();
+                  ProfessionalsScreen();
                 },
               );
         },

@@ -4,6 +4,7 @@ import 'package:appklittletits/screens/cliente/home_cliente_screen.dart';
 import 'package:appklittletits/screens/funcionario/home_funcionario_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:appklittletits/models/user.dart' as user;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
